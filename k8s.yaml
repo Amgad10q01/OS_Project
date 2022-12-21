@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s
+spec:
+  selector:
+    matchLabels:
+      name: Amgd 
+  replicas: 3
+  template:
+      metadata:
+        name: mypod
+        labels:
+          name: Amgd 
+      spec: 
+        containers:
+          - image: amgad10q01/myweb
+            name: website-container
+            imagePullPolicy: IfNotPresent
+            ports:
+              - containerPort: 9000
